@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arjuuw Hub</title>
+
+<meta name="description" content="Explore all Arjuuw websites, games, tools and creations in one place.">
+<meta name="theme-color" content="#080b14">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #070910;
+    --card: rgba(255,255,255,0.055);
+    --card-hover: rgba(255,255,255,0.095);
+    --border: rgba(255,255,255,0.10);
+    --text: #ffffff;
+    --muted: #9ca3b3;
+    --accent: #7c5cff;
+    --accent2: #00d4ff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 15% 10%, rgba(124,92,255,.20), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(0,212,255,.13), transparent 25%),
+        radial-gradient(circle at 50% 90%, rgba(124,92,255,.10), transparent 30%),
+        var(--bg);
+    overflow-x: hidden;
+}
+
+/* ================= BACKGROUND ================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.grid {
+    position: absolute;
+    inset: 0;
+    opacity: .18;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .25;
+    animation: floatOrb 10s ease-in-out infinite alternate;
+}
+
+.orb.one {
+    width: 280px;
+    height: 280px;
+    background: #7048ff;
+    top: 10%;
+    left: -100px;
+}
+
+.orb.two {
+    width: 240px;
+    height: 240px;
+    background: #00bfff;
+    right: -80px;
+    top: 35%;
+    animation-delay: 2s;
+}
+
+.orb.three {
+    width: 220px;
+    height: 220px;
+    background: #b12cff;
+    left: 45%;
+    bottom: -100px;
+    animation-delay: 4s;
+}
+
+@keyframes floatOrb {
+    from {
+        transform: translate(0,0) scale(1);
+    }
+    to {
+        transform: translate(40px,-35px) scale(1.12);
+    }
+}
+
+/* ================= HEADER ================= */
+
+header {
+    width: min(1200px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeDown .8s ease forwards;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -.5px;
+}
+
+.logo-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #7c5cff, #00c6ff);
+    box-shadow: 0 8px 30px rgba(124,92,255,.35);
+    font-size: 19px;
+}
+
+.header-link {
+    color: #dce1ef;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255,255,255,.035);
+    transition: .25s;
+}
+
+.header-link:hover {
+    background: rgba(255,255,255,.09);
+    border-color: rgba(124,92,255,.5);
+    transform: translateY(-2px);
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    width: min(1000px, calc(100% - 32px));
+    margin: 70px auto 45px;
+    text-align: center;
+    animation: fadeUp .9s ease forwards;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(124,92,255,.10);
+    border: 1px solid rgba(124,92,255,.25);
+    color: #c9c0ff;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #70ffb0;
+    box-shadow: 0 0 12px #70ffb0;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 9vw, 94px);
+    line-height: .95;
+    letter-spacing: -5px;
+    font-weight: 900;
+    background: linear-gradient(
+        100deg,
+        #ffffff 20%,
+        #a99aff 48%,
+        #58dcff 80%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 25px auto 0;
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-wrap {
+    width: min(700px, calc(100% - 32px));
+    margin: 0 auto 35px;
+    position: relative;
+    animation: fadeUp 1s ease forwards;
+}
+
+.search-box {
+    width: 100%;
+    height: 58px;
+    padding: 0 22px 0 52px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    outline: none;
+    background: rgba(255,255,255,.055);
+    backdrop-filter: blur(20px);
+    color: white;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.search-box::placeholder {
+    color: #777e90;
+}
+
+.search-box:focus {
+    border-color: rgba(124,92,255,.7);
+    box-shadow: 0 0 0 4px rgba(124,92,255,.10);
+}
+
+.search-icon {
+    position: absolute;
+    left: 19px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 19px;
+    color: #8d94a7;
+}
+
+/* ================= FILTERS ================= */
+
+.filters {
+    width: min(1000px, calc(100% - 32px));
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.035);
+    color: #aeb5c5;
+    padding: 9px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: .25s;
+}
+
+.filter:hover,
+.filter.active {
+    color: white;
+    border-color: rgba(124,92,255,.55);
+    background: rgba(124,92,255,.16);
+}
+
+/* ================= STATS ================= */
+
+.stats {
+    width: min(1000px, calc(100% - 32px));
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    min-width: 130px;
+    padding: 15px 22px;
+    text-align: center;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.035);
+    border-radius: 15px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 20px;
+}
+
+.stat span {
+    color: #858c9d;
+    font-size: 12px;
+}
+
+/* ================= GRID ================= */
+
+.websites {
+    width: min(1100px, calc(100% - 32px));
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.website-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+/* ================= CARD ================= */
+
+.card {
+    position: relative;
+    min-height: 275px;
+    padding: 25px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        border-color .35s,
+        box-shadow .35s;
+    animation: cardIn .7s ease both;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -70px;
+    top: -70px;
+    border-radius: 50%;
+    background: var(--card-color);
+    filter: blur(70px);
+    opacity: .12;
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-9px);
+    border-color: color-mix(in srgb, var(--card-color), white 20%);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 35px color-mix(in srgb, var(--card-color), transparent 75%);
+}
+
+.card:hover::before {
+    opacity: .25;
+    transform: scale(1.4);
+}
+
+.card-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 17px;
+    background: var(--card-color);
+    box-shadow: 0 10px 25px color-mix(in srgb, var(--card-color), transparent 65%);
+    font-size: 27px;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+}
+
+.card h2 {
+    font-size: 21px;
+    margin-bottom: 9px;
+    position: relative;
+    z-index: 1;
+}
+
+.card p {
+    color: #8f96a8;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 42px;
+    position: relative;
+    z-index: 1;
+}
+
+.category {
+    display: inline-block;
+    margin-top: 17px;
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: rgba(255,255,255,.055);
+    color: #a9b0c0;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+}
+
+.open-btn {
+    position: absolute;
+    bottom: 22px;
+    right: 22px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.08);
+    font-size: 17px;
+    transition: .25s;
+    z-index: 2;
+}
+
+.open-btn:hover {
+    background: var(--card-color);
+    transform: rotate(-8deg) scale(1.08);
+}
+
+/* ================= NO RESULTS ================= */
+
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 70px 20px;
+    color: #777e90;
+}
+
+.no-results .big {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding: 30px 20px 40px;
+    text-align: center;
+    color: #707789;
+    font-size: 13px;
+}
+
+footer strong {
+    color: #b7bdca;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 850px) {
+    .website-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding-top: 18px;
+    }
+
+    .header-link {
+        display: none;
+    }
+
+    .hero {
+        margin-top: 55px;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+        letter-spacing: -3px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .website-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        min-height: 255px;
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat {
+        min-width: 0;
+        padding: 13px 5px;
+    }
+
+    .stat strong {
+        font-size: 17px;
+    }
+
+    .stat span {
+        font-size: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="grid"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        <div class="logo-box">A</div>
+        <span>ARJUUW</span>
+    </div>
+
+    <a class="header-link" href="#websites">
+        Explore Websites →
+    </a>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="badge">
+        <span class="badge-dot"></span>
+        ARJUUW DIGITAL HUB
+    </div>
+
+    <h1>Everything.<br>In One Place.</h1>
+
+    <p>
+        Games, tools, creative projects and experiments —
+        explore all of Arjuuw's websites from one place.
+    </p>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="search-wrap">
+
+    <span class="search-icon">⌕</span>
+
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="Search websites..."
+        autocomplete="off"
+    >
+
+</div>
+
+
+<!-- FILTERS -->
+
+<div class="filters">
+
+    <button class="filter active" data-filter="all">
+        All
+    </button>
+
+    <button class="filter" data-filter="tools">
+        Tools
+    </button>
+
+    <button class="filter" data-filter="games">
+        Games
+    </button>
+
+    <button class="filter" data-filter="creative">
+        Creative
+    </button>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+    <div class="stat">
+        <strong>09</strong>
+        <span>Websites</span>
+    </div>
+
+    <div class="stat">
+        <strong>03</strong>
+        <span>Games</span>
+    </div>
+
+    <div class="stat">
+        <strong>∞</strong>
+        <span>Ideas</span>
+    </div>
+
+</div>
+
+
+<!-- WEBSITES -->
+
+<section class="websites" id="websites">
+
+    <div class="website-grid" id="websiteGrid">
+
+
+        <!-- MY SHOP -->
+
+        <article
+            class="card"
+            data-category="tools"
+            data-name="MyShop"
+            style="--card-color:#00d4ff;"
+        >
+
+            <div class="card-icon">🛍️</div>
+
+            <h2>MyShop</h2>
+
+            <p>
+                A simple shopping and product browsing experience.
+            </p>
+
+            <span class="category">
+                Tool
+            </span>
+
+            <a
+                class="open-btn"
+                href="https://arjuuw777.github.io/MyShop/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open MyShop"
+            >
+                ↗
+            </a>
+
+        </article>
+
+
+        <!-- MY RANDOM -->
+
+        <article
+            class="card"
+            data-category="tools"
+            data-name="MyRandom"
+            style="--card-color:#ff9f43;"
+        >
+
+            <div class="card-icon">🎲</div>
+
+            <h2>MyRandom</h2>
+
+            <p>
+                Random generators and fun tools for making quick choices.
+            </p>
+
+            <span class="category">
+                Tool
+            </span>
+
+            <a
+                class="open-btn"
+                href="https://arjuuw777.github.io/MyRandom/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open MyRandom"
+            >
+                ↗
+            </a>
+
+        </article>
+
+
+        <!-- MY QUIZ -->
+
+        <article
+            class="card"
+            data-category="tools"
+            data-name="MyQuiz"
+            style="--card-color:#a855f7;"
+        >
+
+            <div class="card-icon">🧠</div>
+
+            <h2>MyQuiz</h2>
+
+            <p>
+                Interactive quizzes designed for quick and entertaining challenges.
+            </p>
+
+            <span class="category">
+                Tool
+            </span>
+
+            <a
+                class="open-btn"
+                href="https://arjuuw777.github.io/MyQuiz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open MyQuiz"
+            >
+                ↗
+            </a>
+
+        </article>
+
+
+        <!-- TWO PLAYER -->
+
+        <article
+            class="card"
+            data-category="games"
+            data-name="TwoPlayer"
+            style="--card-color:#22c55e;"
+        >
+
+            <div class="card-icon">🎮</div>
+
+            <h2>TwoPlayer</h2>
+
+            <p>
+                Multiplayer games designed for two people to play together.
+            </p>
+
+            <span class="category">
+                Game
+            </span>
+
+            <a
+                class="open-btn"
+                href="https://arjuuw777.github.io/TwoPlayer/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open TwoPlayer"
+            >
+                ↗
+            </a>
+
+        </article>
+
+
+        <!-- MEME MAKER -->
+
+        <article
+            class="card"
+            data-category="creative"
+            data-name="MemeMaker"
+            style="--card-color:#facc15;"
+        >
+
+            <div class="card-icon">😂</div>
+
+            <h2>MemeMaker</h2>
+
+            <p>
+                Create memes and turn ideas into shareable images.
+            </p>
+
+            <span class="category">
+                Creative
+            </span>
+
+            <a
+                class="open-btn"
+                href="https://arjuuw777.github.io/MemeMaker/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open MemeMaker"
+            >
+                ↗
+            </a>
+
+        </article>
+
+
+        <!-- SPACE SHOOTER -->
+
+        <article
+            class="card"
+            data-category="games"
+            data-name="SpaceShooter"
+            style="--card-color:#3b82f6;"
+        >
+
+            <div class="card-icon">🚀</div>
+
+            <h2>SpaceShooter</h2>
+
+            <p>
+                Jump into space and survive an arcade-style shooting challenge.
+            </p>
+
+            <span class="category">
+                Game
+            </span>
+
+            <a
+                class="open-btn"
+                href="https://arjuuw777.github.io/SpaceShooter/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open SpaceShooter"
+            >
+                ↗
+            </a>
+
+        </article>
+
+
+        <!-- PEACE -->
+
+        <article
+            class="card"
+            data-category="creative"
+            data-name="Peace"
+            style="--card-color:#14b8a6;"
+        >
+
+            <div class="card-icon">🕊️</div>
+
+            <h2>Peace</h2>
+
+            <p>
+                A calm digital experience designed to slow things down.
+            </p>
+
+            <span class="category">
+                Creative
+            </span>
+
+            <a
+                class="open-btn"
+                href="https://arjuuw777.github.io/Peace/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Peace"
+            >
+                ↗
+            </a>
+
+        </article>
+
+
+        <!-- THE LAST ROOM -->
+
+        <article
+            class="card"
+            data-category="games"
+            data-name="TheLastRoom"
+            style="--card-color:#ef4444;"
+        >
+
+            <div class="card-icon">🚪</div>
+
+            <h2>TheLastRoom</h2>
+
+            <p>
+                A mysterious interactive horror experience.
+            </p>
+
+            <span class="category">
+                Game
+            </span>
+
+            <a
+                class="open-btn"
+                href="https://arjuuw777.github.io/TheLastRoom/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open TheLastRoom"
+            >
+                ↗
+            </a>
+
+        </article>
+
+
+        <!-- MONEY TRACKER -->
+
+        <article
+            class="card"
+            data-category="tools"
+            data-name="MoneyTracker"
+            style="--card-color:#10b981;"
+        >
+
+            <div class="card-icon">💰</div>
+
+            <h2>MoneyTracker</h2>
+
+            <p>
+                Track income, expenses and everyday spending in one place.
+            </p>
+
+            <span class="category">
+                Tool
+            </span>
+
+            <a
+                class="open-btn"
+                href="https://arjuuw777.github.io/MoneyTracker/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open MoneyTracker"
+            >
+                ↗
+            </a>
+
+        </article>
+
+
+    </div>
+
+
+    <!-- NO RESULTS -->
+
+    <div class="no-results" id="noResults">
+
+        <div class="big">⌕</div>
+
+        <h3>No website found</h3>
+
+        <p>
+            Try searching for something else.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © <span id="year"></span> <strong>Arjuuw</strong>
+    </p>
+
+    <p style="margin-top:8px;">
+        Made by Arjuuw
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ==========================================
+   SEARCH + FILTER SYSTEM
+========================================== */
+
+const searchInput = document.getElementById("search");
+const cards = Array.from(document.querySelectorAll(".card"));
+const filters = document.querySelectorAll(".filter");
+const noResults = document.getElementById("noResults");
+
+let currentFilter = "all";
+
+
+function updateCards() {
+
+    const searchText =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+    let visibleCount = 0;
+
+    cards.forEach((card, index) => {
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        const category =
+            card.dataset.category.toLowerCase();
+
+        const matchesSearch =
+            name.includes(searchText);
+
+        const matchesFilter =
+            currentFilter === "all" ||
+            category === currentFilter;
+
+        if (matchesSearch && matchesFilter) {
+
+            card.style.display = "block";
+
+            card.style.animation =
+                "none";
+
+            void card.offsetWidth;
+
+            card.style.animation =
+                "cardIn .5s ease forwards";
+
+            visibleCount++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    noResults.style.display =
+        visibleCount === 0
+        ? "block"
+        : "none";
+}
+
+
+/* SEARCH */
+
+searchInput.addEventListener(
+    "input",
+    updateCards
+);
+
+
+/* FILTER BUTTONS */
+
+filters.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            filters.forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+            button.classList.add("active");
+
+            currentFilter =
+                button.dataset.filter;
+
+            updateCards();
+
+        }
+    );
+
+});
+
+
+/* ==========================================
+   CURRENT YEAR
+========================================== */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* ==========================================
+   CARD MOUSE EFFECT
+========================================== */
+
+cards.forEach(card => {
+
+    card.addEventListener(
+        "mousemove",
+        event => {
+
+            if (window.innerWidth < 700)
+                return;
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const rotateX =
+                ((y / rect.height) - .5) * -5;
+
+            const rotateY =
+                ((x / rect.width) - .5) * 5;
+
+            card.style.transform =
+                `translateY(-9px)
+                 perspective(700px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)`;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        () => {
+
+            card.style.transform = "";
+
+        }
+    );
+
+});
+
+
+/* ==========================================
+   KEYBOARD SHORTCUT
+   Press "/" to search
+========================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "/" &&
+            document.activeElement !== searchInput
+        ) {
+
+            event.preventDefault();
+
+            searchInput.focus();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
